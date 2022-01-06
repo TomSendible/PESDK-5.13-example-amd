@@ -4,7 +4,6 @@ const PRODUCTION = 'production';
 
 module.exports = (env, argv) => {
     const environment = argv.mode;
-    const dependOn = ['react', 'react-dom'];
 
     const plugins = [];
 
@@ -27,21 +26,13 @@ module.exports = (env, argv) => {
     }
 
     return {
-        mode: environment,
-        entry: {
-            PhotoEditor: {
-                import: './src/react/PhotoEditor.js',
-                dependOn,
-            },
-            react: 'react',
-            'react-dom': 'react-dom',
-        },
+        mode: 'production',
+        entry: './src/main.js',
         devtool: 'source-map',
         output: {
             path: path.resolve('src/libs/'),
             filename: '[name].js',
             publicPath: 'src/libs/',
-            libraryTarget: 'amd',
         },
         plugins,
         module: {
